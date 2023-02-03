@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { useDispatch } from 'react-redux';
+import { addNewUser } from './usersSlice';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -11,12 +13,13 @@ import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 
 export default function SignUp({ open, handleClose }) {
+  const dispatch = useDispatch();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    for (const pair of data.entries()) {
-      console.log(`${pair[0]}: ${pair[1]}`);
-    }
+    const dataObj = Object.fromEntries(data.entries())
+    console.log('inside SignUp handleSubmit - dataObj :>> ', dataObj);
+    dispatch(addNewUser(dataObj))
   };
 
   return (
