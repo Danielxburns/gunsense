@@ -4,10 +4,11 @@ import {
   createSlice,
 } from '@reduxjs/toolkit';
 import { nanoid } from '@reduxjs/toolkit';
+import { mockUsers } from '../../mockData.js/mockUsers'
 //import axios from 'axios';
 
 const usersAdapter = createEntityAdapter({
-  selectId: (user) => user._id,
+  selectId: (user) => user.id.$oid,
 });
 
 const initialState = usersAdapter.getInitialState({
@@ -18,18 +19,35 @@ const initialState = usersAdapter.getInitialState({
 
 // const url = 'http://localhost:5000'
 
+export const fetchAllUsers = createAsyncThunk(
+  'users/fetchAllUsers',
+  async () => {
+    /* --------- PLACE API CALL HERE --------- */
+    /* example: const response = await axios.get(`${url}/users`); */
+    /* ------- THIS IS A MOCK API CALL ------- */
+    const response = await new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve({data: mockUsers})
+      }, 3000);
+    });
+    console.log('inside fetchAllUsers - response.data[0] :>> ', response.data[0]);
+    return response.data
+  }
+);
+
 export const addNewUser = createAsyncThunk(
   'users/addNewUser',
   async (newuser) => {
-    //  const response = await axios.post(`${url}/users`, newuser);
+    /* --------- PLACE API CALL HERE --------- */
+    /* example: const response = await axios.post(`${url}/users`, newuser); */
+    /* ------- THIS IS A MOCK API CALL ------- */
     const response = await new Promise((resolve, reject) => {
       setTimeout(() => {
-        const userData = { ...newuser, _id:nanoid() }
-        console.log('inside setTimeout - userData :>> ', userData);
+        const userData = { ...newuser, id: {$oid: nanoid()} };
         resolve({ data: userData });
-      }, 2000);
+      }, 3000);
     });
-    console.log('response :>> ', response);
+    console.log('response from addNewUser inside usersSlice.js :>> ', response);
     return response.data;
   }
 );
@@ -42,13 +60,21 @@ export const usersSlice = createSlice({
       console.log('signInUser - action.payload :>> ', action.payload);
       state.currentUser = state.entities[action.payload];
     },
-    updateCurrentUser(state, action) {
-      console.log('updateCurrentUser - action.payload :>> ', action.payload);
-      state.currentUser = action.payload;
-    },
   },
   extraReducers(builder) {
     builder
+      .addCase(fetchAllUsers.pending, (state, action)=> {
+        state.status = 'fetching all users'
+      })
+      .addCase(fetchAllUsers.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        console.log('action.payload[1] :>> ', action.payload[1]);
+        usersAdapter.upsertMany(state, action.payload);
+      })
+      .addCase(fetchAllUsers.rejected, (state, action) => {
+        state.status = 'failed';
+        console.log('error fetching all users:>> ', action.error);
+      })
       .addCase(addNewUser.pending, (state, action) => {
         state.status = 'adding new user';
       })
@@ -67,7 +93,7 @@ export const usersSlice = createSlice({
 
 export default usersSlice.reducer;
 
-export const { createNewUser, updateCurrentUser } = usersSlice.actions;
+export const { signInUser } = usersSlice.actions;
 
 export const { selectById: selectUserById } = usersAdapter.getSelectors(
   (state) => state.users
