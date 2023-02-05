@@ -1,4 +1,4 @@
-export const mockUsers = [
+export const MOCK_USERS = [
   {
     id: { $oid: '63de9240fc13ae18600003e8' },
     first_name: 'Willette',

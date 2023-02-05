@@ -4,7 +4,7 @@ import {
   createSlice,
 } from '@reduxjs/toolkit';
 import { nanoid } from '@reduxjs/toolkit';
-import { mockUsers } from '../../mockData.js/mockUsers'
+import { MOCK_USERS } from '../../mockData.js/mockUsers'
 //import axios from 'axios';
 
 const usersAdapter = createEntityAdapter({
@@ -27,11 +27,11 @@ export const fetchAllUsers = createAsyncThunk(
     /* ------- THIS IS A MOCK API CALL ------- */
     const response = await new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve({data: mockUsers})
+        resolve({data: MOCK_USERS})
       }, 3000);
     });
-    console.log('inside fetchAllUsers - response.data[0] :>> ', response.data[0]);
-    return response.data
+    console.log('fetchAllUsers - response.data[0] :>> ', response.data[0]);
+    return response.data;
   }
 );
 
@@ -68,7 +68,7 @@ export const usersSlice = createSlice({
       })
       .addCase(fetchAllUsers.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        console.log('action.payload[1] :>> ', action.payload[1]);
+        console.log('fetchAllUsers action.payload[1] :>> ', action.payload[1]);
         usersAdapter.upsertMany(state, action.payload);
       })
       .addCase(fetchAllUsers.rejected, (state, action) => {

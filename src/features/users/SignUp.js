@@ -25,6 +25,7 @@ export default function SignUp({ open, handleClose }) {
     } else {
       setPasswordError(false);
     }
+    data.delete('confirmPassword')
     const dataObj = Object.fromEntries(data.entries());
     console.log('inside SignUp handleSubmit - dataObj :>> ', dataObj);
     dispatch(addNewUser(dataObj));
