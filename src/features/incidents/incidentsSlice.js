@@ -3,7 +3,7 @@ import {
   createAsyncThunk,
   createSlice,
 } from '@reduxjs/toolkit';
-import { MOCK_INCIDENTS } from '../../mockData.js/mockIncidents';
+import { MOCK_INCIDENTS } from '../../mockData/mockIncidents';
 
 const incidentsAdapter = createEntityAdapter({
   selectId: (incident) => incident.id.$oid,
@@ -21,7 +21,7 @@ export const fetchAllIncidents = createAsyncThunk(
     /* --------- PLACE API CALL HERE --------- */
     const response = await new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve({ data: MOCK_INCIDENTS })
+        resolve({ data: MOCK_INCIDENTS });
       }, 3000);
     });
     console.log('fetchAllIncidents response.data[0] :>> ', response.data[0]);
