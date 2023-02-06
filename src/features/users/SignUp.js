@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addNewUser } from './usersSlice';
 import Button from '@mui/material/Button';
@@ -14,12 +14,21 @@ import DialogContent from '@mui/material/DialogContent';
 
 export default function SignUp({ open, handleClose }) {
   const dispatch = useDispatch();
+  const [passwordError, setPasswordError] = useState(false);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const dataObj = Object.fromEntries(data.entries())
+    if (data.get('password') !== data.get('confirmPassword')) {
+      setPasswordError(true);
+      return;
+    } else {
+      setPasswordError(false);
+    }
+    data.delete('confirmPassword')
+    const dataObj = Object.fromEntries(data.entries());
     console.log('inside SignUp handleSubmit - dataObj :>> ', dataObj);
-    dispatch(addNewUser(dataObj))
+    dispatch(addNewUser(dataObj));
   };
 
   return (
@@ -78,22 +87,22 @@ export default function SignUp({ open, handleClose }) {
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
-                  required
-                  fullWidth
-                  id="city"
-                  label="City"
-                  name="city"
-                  autoComplete="city"
+                    required
+                    fullWidth
+                    id="city"
+                    label="City"
+                    name="city"
+                    autoComplete="city"
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <TextField
-                  required
-                  fullWidth
-                  id="state"
-                  label="State"
-                  name="state"
-                  autoComplete="state"
+                    required
+                    fullWidth
+                    id="state"
+                    label="State"
+                    name="state"
+                    autoComplete="state"
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -107,15 +116,15 @@ export default function SignUp({ open, handleClose }) {
                   />
                 </Grid>
                 <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                />
-              </Grid>
+                  <TextField
+                    required
+                    fullWidth
+                    id="email"
+                    label="Email Address"
+                    name="email"
+                    autoComplete="email"
+                  />
+                </Grid>
                 <Grid item xs={12}>
                   <TextField
                     required
@@ -129,13 +138,13 @@ export default function SignUp({ open, handleClose }) {
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
+                    error={passwordError}
                     required
                     fullWidth
-                    name="verify-password"
-                    label="Verify Password"
-                    type="verify-password"
-                    id="verify-password"
-                    autoComplete="new-password"
+                    name="confirmPassword"
+                    label="Confirm Password"
+                    type="password"
+                    id="confirmPassword"
                   />
                 </Grid>
               </Grid>
