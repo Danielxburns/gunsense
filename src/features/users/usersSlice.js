@@ -54,7 +54,7 @@ export const addNewUser = createAsyncThunk(
 
 export const usersSlice = createSlice({
   name: 'users',
-  initialState: initialState,
+  initialState,
   reducers: {
     signInUser(state, action) {
       console.log('signInUser - action.payload :>> ', action.payload);

@@ -31,7 +31,7 @@ export const fetchAllIncidents = createAsyncThunk(
 
 export const incidentsSlice = createSlice({
   name: 'incidents',
-  initialState: initialState,
+  initialState,
   reducers: {},
   extraReducers(builder) {
     builder
