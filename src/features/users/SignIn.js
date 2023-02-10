@@ -9,7 +9,6 @@ import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
-import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
 
 
@@ -26,11 +25,10 @@ export default function SignIn({ open, handleClose }) {
   return (
     <Dialog open={open} onClose={handleClose}>
       <DialogContent>
-      <Container component="main" maxWidth="xs">
-      <CssBaseline />
+      <Container maxWidth="xs">
       <Box
         sx={{
-          marginTop: 8,
+          marginTop: 4,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
