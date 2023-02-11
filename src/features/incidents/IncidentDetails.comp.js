@@ -4,13 +4,18 @@ import Typography from '@mui/material/Typography';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 //import DialogContent from '@mui/material/DialogContent';
-import Button from '@mui/material/Button'
+import Button from '@mui/material/Button';
 
 export function IncidentDetails({ open, handleClose, incident }) {
   return (
-    <Dialog open={open} onClose={handleClose}>
+    <Dialog open={open} onClose={handleClose} maxWidth={"lg"}>
+      <DialogActions>
+        <Button variant="outlined" onClick={handleClose}>
+          Close
+        </Button>
+      </DialogActions>
       <Container maxWidth="xlg">
-        <Box sx={{ p: 4 }}>
+        <Box sx={{ px: 4 }}>
           <Typography>Date: {incident.date}</Typography>
           <Typography>Address: {incident.address}</Typography>
           <Typography>City: {incident.city}</Typography>
@@ -25,9 +30,6 @@ export function IncidentDetails({ open, handleClose, incident }) {
           <Typography>Sources: {incident.sources}</Typography>
         </Box>
       </Container>
-      <DialogActions>
-      <Button variant='outlined' onClick={handleClose}>Close</Button>
-    </DialogActions>
     </Dialog>
   );
 }

@@ -12,9 +12,8 @@ function SummariesList() {
   const incidents = useSelector(selectAllIncidents);
   return (
     <FixedSizeList
-      height={900}
-      width={300}
-      itemSize={100}
+      height={800}
+      itemSize={20}
       itemCount={10}
       overscanCount={2}
     >
@@ -33,11 +32,9 @@ function SummariesList() {
 
 export function IncidentsList() {
   const incidentsStatus = useSelector((state) => state.incidents.status);
-
   const [summaries, setSummaries] = useState(<Box />);
 
   useEffect(() => {
-    console.log('inside UseEffect - incidentsStatus :>> ', incidentsStatus);
     if (incidentsStatus === 'fetching all incidents') {
       setSummaries(<CircularProgress />);
     } else if (incidentsStatus === 'succeeded') {
@@ -48,8 +45,8 @@ export function IncidentsList() {
   }, [incidentsStatus]);
 
   return (
-    <Box sx={{}}>
-      <Typography>Incidents List</Typography>
+    <Box sx={{ border: '2px', /* borderRadius: 2, */ pX:4, marginTop: 2 }}>
+      <Typography sx={{ textAlign: 'center', p: 1, border:'1px solid' }}variant='h4'>Incidents List</Typography>
       {summaries}
     </Box>
   );

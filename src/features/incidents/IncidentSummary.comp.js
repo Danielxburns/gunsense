@@ -10,11 +10,11 @@ export function IncidentSummary({incident}) {
     <Box sx={{}}>
       <Paper /* variant="outlined"  */elevation={0}>
       <Typography>{date}</Typography>
-      <Typography>{city}</Typography>
-      <Typography>{state}</Typography>
+      <Typography component='span'>{city}, </Typography>
+      <Typography component='span'>{state}</Typography>
       <Typography>{address}</Typography>
-      <Typography>Killed: {killed}</Typography>
-      <Typography>Injured: {injured}</Typography>
+      <Typography component='span'>Killed: {killed}  </Typography>
+      <Typography component='span'>  Injured: {injured}</Typography>
       <IncidentDetailsButton incidentId={id.$oid} />
       </Paper>
     </Box>
