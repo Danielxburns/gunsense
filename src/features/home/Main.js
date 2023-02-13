@@ -5,6 +5,8 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import { IncidentsList } from '../incidents/IncidentsList.comp';
 import { Map } from '../incidents/Map.comp';
+import { User } from '../users/User.comp';
+import { LettersList } from '../letters/LettersList.comp';
 
 export default function Main() {
   return (
@@ -12,11 +14,9 @@ export default function Main() {
       <ButtonAppBar />
       <Container maxWidth="xlg">
         <Box
-          sx={
-            {
-              flexGrow: 1 
-            }
-          }
+          sx={{
+            flexGrow: 1,
+          }}
         >
           <Grid container spacing={2}>
             <Grid item xs={3}>
@@ -24,6 +24,20 @@ export default function Main() {
             </Grid>
             <Grid item xs={9}>
               <Map />
+              <Grid
+                container
+                spacing={2}
+                sx={{
+                  flexGrow: 1,
+                }}
+              >
+                <Grid item xs={9}>
+                  <LettersList />
+                </Grid>
+                <Grid item xs={3} >
+                  <User />
+                </Grid>
+              </Grid>
             </Grid>
           </Grid>
         </Box>

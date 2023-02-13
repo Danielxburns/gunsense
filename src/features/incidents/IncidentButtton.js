@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Button from '@mui/material/Button';
 import { IncidentDetails } from './IncidentDetails.comp';
 
-export function IncidentDetailsButton({incidentId}) {
+export function IncidentButton({incidentId}) {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {

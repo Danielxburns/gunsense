@@ -36,7 +36,9 @@ export function IncidentsList() {
 
   useEffect(() => {
     if (incidentsStatus === 'fetching all incidents') {
-      setSummaries(<CircularProgress />);
+      setSummaries(<Box sx={{ p:2, display: 'flex', justifyContent: 'center' }}  >
+        <CircularProgress />
+      </Box>);
     } else if (incidentsStatus === 'succeeded') {
       setSummaries(<SummariesList />);
     } else if (incidentsStatus === 'failed') {
@@ -45,8 +47,8 @@ export function IncidentsList() {
   }, [incidentsStatus]);
 
   return (
-    <Box sx={{ border: '2px', /* borderRadius: 2, */ pX:4, marginTop: 2 }}>
-      <Typography sx={{ textAlign: 'center', p: 1, border:'1px solid' }}variant='h4'>Incidents List</Typography>
+    <Box sx={{ border: '1px solid', borderRadius: 2, pX:1, marginTop: 2 }}>
+      <Typography sx={{ textAlign: 'center', p: 1, borderBottom:'1px solid' }}variant='h4'>Incidents List</Typography>
       {summaries}
     </Box>
   );

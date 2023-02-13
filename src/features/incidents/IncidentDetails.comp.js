@@ -4,15 +4,16 @@ import Typography from '@mui/material/Typography';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 //import DialogContent from '@mui/material/DialogContent';
-import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 
 export function IncidentDetails({ open, handleClose, incident }) {
   return (
-    <Dialog open={open} onClose={handleClose} maxWidth={"lg"}>
+    <Dialog open={open} onClose={handleClose} maxWidth={'lg'}>
       <DialogActions>
-        <Button variant="outlined" onClick={handleClose}>
-          Close
-        </Button>
+        <IconButton onClick={handleClose} aria-label="cancel">
+          <CancelOutlinedIcon />
+        </IconButton>
       </DialogActions>
       <Container maxWidth="xlg">
         <Box sx={{ px: 4 }}>
