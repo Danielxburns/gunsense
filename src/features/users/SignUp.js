@@ -10,7 +10,11 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
+import IconButton from '@mui/material/IconButton';
+import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 
 export default function SignUp({ open, handleClose }) {
   const dispatch = useDispatch();
@@ -25,7 +29,7 @@ export default function SignUp({ open, handleClose }) {
     } else {
       setPasswordError(false);
     }
-    data.delete('confirmPassword')
+    data.delete('confirmPassword');
     const dataObj = Object.fromEntries(data.entries());
     console.log('inside SignUp handleSubmit - dataObj :>> ', dataObj);
     dispatch(addNewUser(dataObj));
@@ -33,25 +37,36 @@ export default function SignUp({ open, handleClose }) {
 
   return (
     <Dialog open={open} onClose={handleClose}>
-      <DialogContent>
-        <Container component="main" maxWidth="xs">
-          <CssBaseline />
-          <Box
-            sx={{
-              marginTop: 4,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
+      <CssBaseline />
+      <DialogActions>
+        <IconButton onClick={handleClose} aria-label="cancel">
+          <CancelOutlinedIcon />
+        </IconButton>
+      </DialogActions>
+      <Container maxWidth="md">
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <DialogTitle>
             <Typography component="h1" variant="h5">
               Sign up
             </Typography>
+          </DialogTitle>
+          <DialogContent>
             <Box
               component="form"
               noValidate
               onSubmit={handleSubmit}
-              sx={{ mt: 3 }}
+              sx={{
+                mt: 3,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+              }}
             >
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
@@ -164,9 +179,9 @@ export default function SignUp({ open, handleClose }) {
                 </Grid>
               </Grid>
             </Box>
-          </Box>
-        </Container>
-      </DialogContent>
+          </DialogContent>
+        </Box>
+      </Container>
     </Dialog>
   );
 }

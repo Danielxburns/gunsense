@@ -21,6 +21,15 @@ const theme = createTheme({
       main: blueGrey[800],
     },
   },
+  components: {
+    MuiDialogTitle: {
+      styleOverrides: {
+        root: {
+          padding: 0,
+        }
+      }
+    }
+  }
 });
 
 root.render(

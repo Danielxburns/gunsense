@@ -41,7 +41,7 @@ function App() {
 
   return (
     <>
-      <CssBaseline enableColorScheme>
+      <CssBaseline>
         <Main />
       </CssBaseline>
     </>

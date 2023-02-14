@@ -6,15 +6,17 @@ import { RepCard } from './RepCard';
 
 import CssBaseline from '@mui/material/CssBaseline';
 import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import IconButton from '@mui/material/IconButton';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import CircularProgress from '@mui/material/CircularProgress';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import CircularProgress from '@mui/material/CircularProgress';
 
 export function RepsList({ open, handleClose, address }) {
   /* const dispatch = useDisatch(); */
@@ -38,19 +40,24 @@ export function RepsList({ open, handleClose, address }) {
   return (
     <Dialog open={open} onClose={handleClose} fullwidth="true" maxWidth="md">
       <CssBaseline />
-      <DialogTitle sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Typography
-          component="h3"
-          variant="h4"
-          sx={{ flexGrow: 1, textAlign: 'center' }}
-        >
-          Representatives List
-        </Typography>
+      <DialogActions>
         <IconButton onClick={handleClose} aria-label="cancel">
           <CancelOutlinedIcon />
         </IconButton>
-      </DialogTitle>
-      <DialogContent>{reps}</DialogContent>
+      </DialogActions>
+      <Container maxWidth="lg">
+        <DialogTitle>
+          <Typography component="h1" variant="h5" sx={{ textAlign: 'center' }}>
+            Representatives List
+          </Typography>
+        </DialogTitle>
+        <DialogContent>
+          <Box sx={{ mt: 3 }}>
+            <CssBaseline />
+            {reps}
+          </Box>
+        </DialogContent>
+      </Container>
     </Dialog>
   );
 }

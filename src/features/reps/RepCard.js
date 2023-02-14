@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 
 export function RepCard({ rep }) {
   return (
-    <Card sx={{ display: 'flex',/* maxWidth: 345 */ }}>
+    <Card sx={{ display: 'flex', width: 'inherit' }}>
       <CardMedia
         component="img"
         sx={{ height: 100, width: 100 }}
@@ -18,10 +18,10 @@ export function RepCard({ rep }) {
         title={rep.name}
       />
       <CardContent sx={{ display: 'flex', flexDirection: 'column' }}>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="h6" component="div">
           {rep.name}
         </Typography>
-        <Typography variant="h6" color="text.secondary">
+        <Typography fontWeight={'bold'} color="text.secondary">
           {rep.officeName}
         </Typography>
         <Typography variant="body2" color="text.secondary">

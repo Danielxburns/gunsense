@@ -1,36 +1,49 @@
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import CssBaseline from '@mui/material/CssBaseline';
 import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
-//import DialogContent from '@mui/material/DialogContent';
+import DialogContent from '@mui/material/DialogContent';
 import IconButton from '@mui/material/IconButton';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 
 export function IncidentDetails({ open, handleClose, incident }) {
   return (
-    <Dialog open={open} onClose={handleClose} fullwidth='true' maxWidth={'lg'}>
-      <DialogTitle sx={{ display:'flex', justifyContent:'space-between' }}>
-        <Typography component='h3' variant='h4' sx={{ flexGrow: 1, textAlign:'center' }}>Incident Details</Typography>
+    <Dialog open={open} onClose={handleClose} fullwidth="true" maxWidth={'lg'}>
+      <CssBaseline />
+      <DialogActions>
         <IconButton onClick={handleClose} aria-label="cancel">
           <CancelOutlinedIcon />
         </IconButton>
-      </DialogTitle>
+      </DialogActions>
       <Container maxWidth="xlg">
-        <Box sx={{ px: 4 }}>
-          <Typography>Date: {incident.date}</Typography>
-          <Typography>Address: {incident.address}</Typography>
-          <Typography>City: {incident.city}</Typography>
-          <Typography>State: {incident.state}</Typography>
-          <Typography>Notes: {incident.notes}</Typography>
-          <Typography>Participants: </Typography>
-          <Box sx={{ ml: 4, pt: 1 }}>
-            {incident.participants.map((participant, index) => (
-              <Participant participant={participant} key={index} />
-            ))}
+        <DialogTitle>
+          <Typography
+            component="h1"
+            variant="h5"
+            sx={{ textAlign: 'center' }}
+          >
+            Incident Details
+          </Typography>
+        </DialogTitle>
+        <DialogContent>
+          <Box sx={{ mt: 3, px: 4 }}>
+            <Typography>Date: {incident.date}</Typography>
+            <Typography>Address: {incident.address}</Typography>
+            <Typography>City: {incident.city}</Typography>
+            <Typography>State: {incident.state}</Typography>
+            <Typography>Notes: {incident.notes}</Typography>
+            <Typography>Participants: </Typography>
+            <Box sx={{ ml: 4, pt: 1 }}>
+              {incident.participants.map((participant, index) => (
+                <Participant participant={participant} key={index} />
+              ))}
+            </Box>
+            <Typography noWrap>Sources: {incident.sources}</Typography>
           </Box>
-          <Typography noWrap >Sources: {incident.sources}</Typography>
-        </Box>
+        </DialogContent>
       </Container>
     </Dialog>
   );

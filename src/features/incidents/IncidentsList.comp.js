@@ -29,7 +29,7 @@ export function IncidentsList() {
 
   return (
     <Box sx={{ border: '1px solid', borderRadius: 2, pX:1, marginTop: 2, }}>
-      <Typography sx={{ textAlign: 'center', p: 1, borderBottom:'1px solid', backgroundColor: deepOrange[400] }}variant='h4'>Incidents List</Typography>
+      <Typography sx={{ textAlign: 'center', borderBottom:'1px solid', backgroundColor: deepOrange[400] }}variant='h4'>Incidents List</Typography>
       {summaries}
     </Box>
   );
