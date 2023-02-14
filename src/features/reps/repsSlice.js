@@ -45,4 +45,4 @@ export const repsSlice = createSlice({
 
 export default repsSlice.reducer;
 
-export const { selectById: selectRepById } = repsAdapter.getSelectors(state => state.reps);
+export const { selectById: selectRepById, selectAll: selectAllReps } = repsAdapter.getSelectors(state => state.reps);

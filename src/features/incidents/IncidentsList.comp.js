@@ -1,12 +1,39 @@
 import { useState, useEffect } from 'react';
-import Box from '@mui/material/Box';
+import { useSelector } from 'react-redux';
+import { selectAllIncidents } from './incidentsSlice';
+
+import { IncidentSummary } from './IncidentSummary.comp';
 import { FixedSizeList } from 'react-window';
+
+import Box from '@mui/material/Box';
 import ListItem from '@mui/material/ListItem';
 import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
-import { useSelector } from 'react-redux';
-import { selectAllIncidents } from './incidentsSlice';
-import { IncidentSummary } from './IncidentSummary.comp';
+import { deepOrange } from '@mui/material/colors'
+
+export function IncidentsList() {
+  const incidentsStatus = useSelector((state) => state.incidents.status);
+  const [summaries, setSummaries] = useState(<Box />);
+
+  useEffect(() => {
+    if (incidentsStatus === 'fetching all incidents') {
+      setSummaries(<Box sx={{ p:2, display: 'flex', justifyContent: 'center' }}  >
+        <CircularProgress />
+      </Box>);
+    } else if (incidentsStatus === 'succeeded') {
+      setSummaries(<SummariesList />);
+    } else if (incidentsStatus === 'failed') {
+      setSummaries(<Typography>failed to load incidents</Typography>);
+    }
+  }, [incidentsStatus]);
+
+  return (
+    <Box sx={{ border: '1px solid', borderRadius: 2, pX:1, marginTop: 2, }}>
+      <Typography sx={{ textAlign: 'center', p: 1, borderBottom:'1px solid', backgroundColor: deepOrange[400] }}variant='h4'>Incidents List</Typography>
+      {summaries}
+    </Box>
+  );
+}
 
 function SummariesList() {
   const incidents = useSelector(selectAllIncidents);
@@ -28,28 +55,4 @@ function SummariesList() {
       </ListItem>
     ));
   }
-}
-
-export function IncidentsList() {
-  const incidentsStatus = useSelector((state) => state.incidents.status);
-  const [summaries, setSummaries] = useState(<Box />);
-
-  useEffect(() => {
-    if (incidentsStatus === 'fetching all incidents') {
-      setSummaries(<Box sx={{ p:2, display: 'flex', justifyContent: 'center' }}  >
-        <CircularProgress />
-      </Box>);
-    } else if (incidentsStatus === 'succeeded') {
-      setSummaries(<SummariesList />);
-    } else if (incidentsStatus === 'failed') {
-      setSummaries(<Typography>failed to load incidents</Typography>);
-    }
-  }, [incidentsStatus]);
-
-  return (
-    <Box sx={{ border: '1px solid', borderRadius: 2, pX:1, marginTop: 2 }}>
-      <Typography sx={{ textAlign: 'center', p: 1, borderBottom:'1px solid' }}variant='h4'>Incidents List</Typography>
-      {summaries}
-    </Box>
-  );
 }
