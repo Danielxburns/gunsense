@@ -20,7 +20,7 @@ export function User() {
       }}
     >
       <Box sx={{ borderBottom: '1px solid', textAlign: 'center' }}>
-        <Typography variant="h4" sx={{ backgroundColor: cyan[300] }}>
+        <Typography variant="h5" sx={{ backgroundColor: cyan[300] }}>
           User Info
         </Typography>
       </Box>

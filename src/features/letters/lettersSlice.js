@@ -7,7 +7,7 @@ import { MOCK_LETTERS } from '../../mockData/mockLetters';
 
 const lettersAdapter = createEntityAdapter({
   selectId: (letter) => letter.id.$oid,
-  sortComparer: (a, b) => b.sentAt.localeCompare(a.sentAt),
+  sortComparer: (a, b) => b.sentOn.localeCompare(a.sentOn),
 });
 
 const initialState = lettersAdapter.getInitialState({
@@ -38,10 +38,7 @@ export const lettersSlice = createSlice({
         state.status = 'fetching all letters';
       })
       .addCase(fetchAllLetters.fulfilled, (state, action) => {
-        console.log(
-          'fetchingAllLetters action.payload[0] :>> ',
-          action.payload[0]
-        );
+        state.status = 'succeeded'
         lettersAdapter.upsertMany(state, action.payload);
       })
       .addCase(fetchAllLetters.rejected, (state, { error }) => {
@@ -52,4 +49,4 @@ export const lettersSlice = createSlice({
 
 export default lettersSlice.reducer;
 
-export const { selectById: selectLetterById } = lettersAdapter.getSelectors((state => state.letters))
+export const { selectAll: selectAllLetters, selectById: selectLetterById } = lettersAdapter.getSelectors((state => state.letters))
