@@ -31,7 +31,7 @@ export const fetchAllIncidents = createAsyncThunk(
 
 export const incidentsSlice = createSlice({
   name: 'incidents',
-  initialState: initialState,
+  initialState,
   reducers: {},
   extraReducers(builder) {
     builder
@@ -56,6 +56,6 @@ export const incidentsSlice = createSlice({
 
 export default incidentsSlice.reducer;
 
-export const { selectById: selectIncidentById } = incidentsAdapter.getSelectors(
+export const { selectById: selectIncidentById, selectAll: selectAllIncidents } = incidentsAdapter.getSelectors(
   (state) => state.incidents
 );

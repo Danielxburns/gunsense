@@ -1,11 +1,12 @@
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import SignIn from '../users/SignIn';
 import SignUp from '../users/SignUp';
+import 'typeface-anton';
+import Container from '@mui/material/Container';
 
 export default function ButtonAppBar() {
   const [openSignIn, setOpenSignIn] = React.useState(false);
@@ -25,10 +26,14 @@ export default function ButtonAppBar() {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+    <AppBar position="static">
+      <Container maxWidth="xlg">
         <Toolbar>
-          <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
+          <Typography
+            variant="h4"
+            component="h1"
+            sx={{ flexGrow: 1, fontFamily: 'anton' }}
+          >
             GunSense
           </Typography>
           <Button color="inherit" onClick={handleClickOpenSignIn}>
@@ -40,7 +45,7 @@ export default function ButtonAppBar() {
           </Button>
           <SignUp open={openSignUp} handleClose={handleClose} />
         </Toolbar>
-      </AppBar>
-    </Box>
+      </Container>
+    </AppBar>
   );
 }
