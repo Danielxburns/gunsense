@@ -19,10 +19,10 @@ export function Letter({ open, handleClose, letter }) {
       </DialogActions>
       <Container maxWidth="xlg">
         <CssBaseline />
-        <DialogTitle>
-          <Typography component="h1" variant="h5" sx={{ textAlign: 'center' }}>
+        <DialogTitle variant="h5" sx={{ textAlign: 'center' }}>
+          <div>
             Letter to {letter.to.title} {letter.to.name}
-          </Typography>
+          </div>
         </DialogTitle>
         <DialogContent>
           <Box sx={{ my: 3, px: 4 }}>

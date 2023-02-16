@@ -2,14 +2,16 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { selectAllLetters } from './lettersSlice';
 
-import { LetterInfoCard } from './LetterInfoCard'
+import { FixedSizeList as List } from 'react-window';
+import AutoSizer from 'react-virtualized-auto-sizer';
 
-import CircularProgress from '@mui/material/CircularProgress';
-import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
+import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { amber } from '@mui/material/colors';
+
+import { LetterInfoCard } from './LetterInfoCard';
 
 export function LettersList() {
   const lettersStatus = useSelector((state) => state.letters.status);
@@ -17,9 +19,11 @@ export function LettersList() {
 
   useEffect(() => {
     if (lettersStatus === 'fetching all letters') {
-      setLettersInfo(<Box sx={{ p:2, display: 'flex', justifyContent: 'center' }}  >
-        <CircularProgress />
-      </Box>);
+      setLettersInfo(
+        <Box sx={{ p: 2, display: 'flex', justifyContent: 'center' }}>
+          <CircularProgress />
+        </Box>
+      );
     } else if (lettersStatus === 'succeeded') {
       setLettersInfo(<LettersInfoList />);
     } else if (lettersStatus === 'failed') {
@@ -28,13 +32,25 @@ export function LettersList() {
   }, [lettersStatus]);
 
   return (
-    <Box sx={{ border: '1px solid', borderRadius: 2, }}>
-      <Box sx={{ backgroundColor: amber[400], textAlign: 'center', borderBottom: '1px solid'}}>
-        <Typography variant='h5'>Letters List</Typography>
-      </Box>
-      <Box>
+    <Box
+      sx={{
+        border: '1px solid',
+        borderRadius: 2,
+        height: '25vh',
+        overflow: 'hidden',
+      }}
+    >
+      <Typography
+        sx={{
+          textAlign: 'center',
+          borderBottom: '1px solid',
+          backgroundColor: amber[400],
+        }}
+        variant="h5"
+      >
+        Letters List
+      </Typography>
       {lettersInfo}
-      </Box>
     </Box>
   );
 }
@@ -42,14 +58,26 @@ export function LettersList() {
 function LettersInfoList() {
   const letters = useSelector(selectAllLetters);
   return (
-    <List>
-      {letters.map((letter, index) => (
-        <ListItem key={index} divider={true}>
-          <LetterInfoCard letter={letter} />
-        </ListItem>
-      ))}
-    </List>
+    <AutoSizer>
+      {({ height, width }) => (
+        <List
+          height={height}
+          width={width}
+          itemSize={10}
+          itemCount={5}
+          overscanCount={2}
+        >
+          {getLetterInfoCards}
+        </List>
+      )}
+    </AutoSizer>
   );
+
+  function getLetterInfoCards() {
+    return letters.map((letter, index) => (
+      <ListItem key={index} divider={true}>
+        <LetterInfoCard letter={letter} />
+      </ListItem>
+    ));
+  }
 }
-
-

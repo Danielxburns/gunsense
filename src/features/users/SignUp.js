@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addNewUser } from './usersSlice';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -37,7 +35,6 @@ export default function SignUp({ open, handleClose }) {
 
   return (
     <Dialog open={open} onClose={handleClose}>
-      <CssBaseline />
       <DialogActions>
         <IconButton onClick={handleClose} aria-label="cancel">
           <CancelOutlinedIcon />
@@ -51,10 +48,10 @@ export default function SignUp({ open, handleClose }) {
             alignItems: 'center',
           }}
         >
-          <DialogTitle>
-            <Typography component="h1" variant="h5">
+          <DialogTitle variant="h5">
+            <div>
               Sign up
-            </Typography>
+            </div>
           </DialogTitle>
           <DialogContent>
             <Box

@@ -4,9 +4,8 @@ import { Provider } from 'react-redux';
 import store from './app/store';
 import { ThemeProvider, createTheme } from '@mui/material';
 import { blueGrey } from '@mui/material/colors';
-import App from './App';
+import App from './app/App.js';
 import reportWebVitals from './reportWebVitals';
-import './index.css';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -26,10 +25,19 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           padding: 0,
-        }
-      }
-    }
-  }
+        },
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        contained: {
+          fontSize: '0.8rem',
+          lineHeight: 0.8,
+          letterSpacing: '0.02em',
+        },
+      },
+    },
+  },
 });
 
 root.render(

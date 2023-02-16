@@ -34,7 +34,7 @@ export default function Main() {
                 <Grid item xs={9}>
                   <LettersList />
                 </Grid>
-                <Grid item xs={3} >
+                <Grid item xs={3}>
                   <User />
                 </Grid>
               </Grid>

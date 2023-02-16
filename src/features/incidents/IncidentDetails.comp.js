@@ -19,14 +19,8 @@ export function IncidentDetails({ open, handleClose, incident }) {
         </IconButton>
       </DialogActions>
       <Container maxWidth="xlg">
-        <DialogTitle>
-          <Typography
-            component="h1"
-            variant="h5"
-            sx={{ textAlign: 'center' }}
-          >
-            Incident Details
-          </Typography>
+        <DialogTitle variant="h5" sx={{ textAlign: 'center' }}>
+          <div>Incident Details</div>
         </DialogTitle>
         <DialogContent>
           <Box sx={{ mt: 3, px: 4 }}>
