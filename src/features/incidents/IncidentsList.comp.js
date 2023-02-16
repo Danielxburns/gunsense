@@ -3,13 +3,14 @@ import { useSelector } from 'react-redux';
 import { selectAllIncidents } from './incidentsSlice';
 
 import { IncidentSummary } from './IncidentSummary.comp';
-import { FixedSizeList } from 'react-window';
+import { FixedSizeList as List } from 'react-window';
+import AutoSizer from 'react-virtualized-auto-sizer';
 
 import Box from '@mui/material/Box';
 import ListItem from '@mui/material/ListItem';
 import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
-import { deepOrange } from '@mui/material/colors'
+import { deepOrange } from '@mui/material/colors';
 
 export function IncidentsList() {
   const incidentsStatus = useSelector((state) => state.incidents.status);
@@ -17,9 +18,11 @@ export function IncidentsList() {
 
   useEffect(() => {
     if (incidentsStatus === 'fetching all incidents') {
-      setSummaries(<Box sx={{ p:2, display: 'flex', justifyContent: 'center' }}  >
-        <CircularProgress />
-      </Box>);
+      setSummaries(
+        <Box sx={{ p: 2, display: 'flex', justifyContent: 'center' }}>
+          <CircularProgress />
+        </Box>
+      );
     } else if (incidentsStatus === 'succeeded') {
       setSummaries(<SummariesList />);
     } else if (incidentsStatus === 'failed') {
@@ -28,8 +31,26 @@ export function IncidentsList() {
   }, [incidentsStatus]);
 
   return (
-    <Box sx={{ border: '1px solid', borderRadius: 2, pX:1, marginTop: 2, }}>
-      <Typography sx={{ textAlign: 'center', borderBottom:'1px solid', backgroundColor: deepOrange[400] }}variant='h5'>Incidents List</Typography>
+    <Box
+      sx={{
+        border: '1px solid',
+        borderRadius: 2,
+        pX: 1,
+        marginTop: 2,
+        height: '91vh',
+        overflow: 'hidden',
+      }}
+    >
+      <Typography
+        sx={{
+          textAlign: 'center',
+          borderBottom: '1px solid',
+          backgroundColor: deepOrange[400],
+        }}
+        variant="h5"
+      >
+        Incidents List
+      </Typography>
       {summaries}
     </Box>
   );
@@ -38,14 +59,19 @@ export function IncidentsList() {
 function SummariesList() {
   const incidents = useSelector(selectAllIncidents);
   return (
-    <FixedSizeList
-      height={800}
-      itemSize={20}
-      itemCount={10}
-      overscanCount={2}
-    >
-      {getSummaries}
-    </FixedSizeList>
+    <AutoSizer>
+      {({ height, width }) => (
+        <List
+          height={height}
+          width={width}
+          itemSize={12}
+          itemCount={5}
+          overscanCount={2}
+        >
+          {getSummaries}
+        </List>
+      )}
+    </AutoSizer>
   );
 
   function getSummaries() {

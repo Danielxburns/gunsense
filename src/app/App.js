@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllUsers } from './features/users/usersSlice';
-import { fetchAllIncidents } from './features/incidents/incidentsSlice';
-import { fetchAllLetters } from './features/letters/lettersSlice';
-import { fetchReps } from './features/reps/repsSlice';
+import { fetchAllUsers } from '../features/users/usersSlice';
+import { fetchAllIncidents } from '../features/incidents/incidentsSlice';
+import { fetchAllLetters } from '../features/letters/lettersSlice';
+import { fetchReps } from '../features/reps/repsSlice';
 import CssBaseline from '@mui/material/CssBaseline';
-import Main from './features/home/Main';
-import './App.css';
+import Main from '../features/main/Main';
 
 function App() {
   const dispatch = useDispatch();

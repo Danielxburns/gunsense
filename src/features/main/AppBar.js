@@ -36,12 +36,11 @@ export default function ButtonAppBar() {
           >
             GunSense
           </Typography>
-          <Button color="inherit" onClick={handleClickOpenSignIn}>
-            Sign-In
-          </Button>
+          <Button color="inherit">About </Button>
+          <Button color="inherit">Resources </Button>
+          <Button color="inherit" onClick={handleClickOpenSignIn}>Sign-In </Button>
           <SignIn open={openSignIn} handleClose={handleClose} />
-          <Button color="inherit" onClick={handleClickOpenSignUp}>
-            Sign-Up
+          <Button color="inherit" onClick={handleClickOpenSignUp}>Sign-Up
           </Button>
           <SignUp open={openSignUp} handleClose={handleClose} />
         </Toolbar>

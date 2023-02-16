@@ -1,4 +1,6 @@
-import * as React from 'react';
+import { useDispatch } from 'react-redux';
+import { signInUser } from './usersSlice';
+
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
@@ -7,26 +9,32 @@ import IconButton from '@mui/material/IconButton';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
-import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 
 export default function SignIn({ open, handleClose }) {
+  const dispatch = useDispatch();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    try {
+      dispatch(
+        signInUser({
+          email: data.get('email'),
+          password: data.get('password'),
+        })
+      );
+      handleClose();
+    } catch (error) {
+      alert(`error logging in: ${error}`)
+    }
   };
 
   return (
     <Dialog open={open} onClose={handleClose}>
-      <CssBaseline />
       <DialogActions>
         <IconButton onClick={handleClose} aria-label="cancel">
           <CancelOutlinedIcon />
@@ -40,10 +48,10 @@ export default function SignIn({ open, handleClose }) {
             alignItems: 'center',
           }}
         >
-          <DialogTitle>
-            <Typography component="h1" variant="h5">
+          <DialogTitle variant="h5">
+            <div variant="h5">
               Sign in
-            </Typography>
+            </div>
           </DialogTitle>
           <DialogContent>
             <Box

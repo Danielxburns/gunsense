@@ -8,7 +8,7 @@ import Box from '@mui/material/Box';
 
 export function LetterInfoCard({ letter }) {
   return (
-    <Card sx={{ display: 'flex', flex: 1 }}>
+    <Card sx={{ display: 'flex', flex: 1, pb: 1 }}>
       <Avatar
         alt={letter.to.name}
         src={letter.to.photoUrl}
