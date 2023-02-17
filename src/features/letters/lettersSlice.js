@@ -3,6 +3,7 @@ import {
   createAsyncThunk,
   createSlice,
 } from '@reduxjs/toolkit';
+import { nanoid } from '@reduxjs/toolkit';
 import { MOCK_LETTERS } from '../../mockData/mockLetters';
 
 const lettersAdapter = createEntityAdapter({
@@ -27,6 +28,21 @@ export const fetchAllLetters = createAsyncThunk(
     return response.data;
   }
 );
+export const postNewLetter = createAsyncThunk(
+  'letters/postNewLetter',
+  async (newLetter) => {
+    /* --------- PLACE API CALL HERE --------- */
+    /* example: const response = await axios.post(`${url}/users`, newuser); */
+    /* ------- THIS IS A MOCK API CALL ------- */
+    const response = await new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const userData = { ...newLetter, id: { $oid: nanoid() } };
+        resolve({ data: userData });
+      }, 3000);
+    });
+    return response.data;
+  }
+);
 
 export const lettersSlice = createSlice({
   name: 'letters',
@@ -43,6 +59,18 @@ export const lettersSlice = createSlice({
       })
       .addCase(fetchAllLetters.rejected, (state, { error }) => {
         state.error = error.message;
+      })
+      .addCase(postNewLetter.pending, (state, action) => {
+        state.status = 'posting new letter';
+      })
+      .addCase(postNewLetter.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        /* lettersAdapter.addOne(state, action.payload); */
+      })
+      .addCase(postNewLetter.rejected, (state, action) => {
+        state.status = 'failed';
+        console.log('postNewLetter rejected error :>> ', action.error);
+        state.error = action.error.message;
       });
   },
 });

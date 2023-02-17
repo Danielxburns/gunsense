@@ -8,6 +8,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import IconButton from '@mui/material/IconButton';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
+import Link from '@mui/material/Link';
 
 export function IncidentDetails({ open, handleClose, incident }) {
   return (
@@ -29,13 +30,13 @@ export function IncidentDetails({ open, handleClose, incident }) {
             <Typography>City: {incident.city}</Typography>
             <Typography>State: {incident.state}</Typography>
             <Typography>Notes: {incident.notes}</Typography>
+            <Link noWrap>Sources: {incident.sources}</Link>
             <Typography>Participants: </Typography>
             <Box sx={{ ml: 4, pt: 1 }}>
               {incident.participants.map((participant, index) => (
                 <Participant participant={participant} key={index} />
               ))}
             </Box>
-            <Typography noWrap>Sources: {incident.sources}</Typography>
           </Box>
         </DialogContent>
       </Container>

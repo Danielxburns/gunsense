@@ -10,6 +10,7 @@ import Typography from '@mui/material/Typography';
 import { ComposeButton } from '../letters/ComposeButton';
 
 export function RepCard({ rep }) {
+  
   return (
     <Card sx={{ display: 'flex', width: 'inherit' }}>
       <CardMedia
@@ -24,7 +25,7 @@ export function RepCard({ rep }) {
             {rep.name}
           </Typography>
           <CardActions>
-            <ComposeButton />
+            <ComposeButton rep={rep}/>
           </CardActions>
         </Box>
         <Typography fontWeight={'bold'} color="text.secondary">

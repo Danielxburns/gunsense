@@ -48,7 +48,7 @@ export function LettersList() {
         }}
         variant="h5"
       >
-        Letters List
+        Shared Letters
       </Typography>
       {lettersInfo}
     </Box>
