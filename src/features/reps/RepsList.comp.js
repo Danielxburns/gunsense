@@ -46,10 +46,8 @@ export function RepsList({ open, handleClose, address }) {
         </IconButton>
       </DialogActions>
       <Container maxWidth="lg">
-        <DialogTitle>
-          <Typography component="h1" variant="h5" sx={{ textAlign: 'center' }}>
-            Representatives List
-          </Typography>
+        <DialogTitle variant="h5" sx={{ textAlign: 'center' }}>
+          <div>Representatives List</div>
         </DialogTitle>
         <DialogContent>
           <Box sx={{ mt: 3 }}>

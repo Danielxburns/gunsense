@@ -1,14 +1,16 @@
 //import { useSelector } from 'react-redux';
 //import { selectRepById } from './repsSlice';
-
+import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-//import CardActions from '@mui/material/CardActions';
+import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-//import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
+import { ComposeButton } from '../letters/ComposeButton';
+
 export function RepCard({ rep }) {
+  
   return (
     <Card sx={{ display: 'flex', width: 'inherit' }}>
       <CardMedia
@@ -17,10 +19,15 @@ export function RepCard({ rep }) {
         image={rep.photoUrl}
         title={rep.name}
       />
-      <CardContent sx={{ display: 'flex', flexDirection: 'column' }}>
-        <Typography gutterBottom variant="h6" component="div">
-          {rep.name}
-        </Typography>
+      <CardContent sx={{ display: 'flex', flexDirection: 'column', flex: 1}}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Typography gutterBottom variant="h6" component="div">
+            {rep.name}
+          </Typography>
+          <CardActions>
+            <ComposeButton rep={rep}/>
+          </CardActions>
+        </Box>
         <Typography fontWeight={'bold'} color="text.secondary">
           {rep.officeName}
         </Typography>
@@ -30,9 +37,7 @@ export function RepCard({ rep }) {
         <Typography variant="body2" color="text.secondary">
           phone: {rep.contact.phone}
         </Typography>
-{/*         <CardActions>
-          <Button size="small">Write Me!</Button>
-        </CardActions> */}
+
       </CardContent>
     </Card>
   );

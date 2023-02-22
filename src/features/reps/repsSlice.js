@@ -20,7 +20,6 @@ export const fetchReps = createAsyncThunk('reps/fetchReps', async () => {
       resolve({ data: MOCK_REPS });
     }, 3000);
   });
-  console.log('fetchReps response.data[0] :>> ', response.data[0]);
   return response.data;
 });
 

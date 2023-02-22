@@ -12,7 +12,7 @@ const usersAdapter = createEntityAdapter({
 });
 
 const initialState = usersAdapter.getInitialState({
-  currentUser: {},
+  currentUser: null,
   status: 'idle',
   error: null,
 });
@@ -30,7 +30,6 @@ export const fetchAllUsers = createAsyncThunk(
         resolve({ data: MOCK_USERS });
       }, 3000);
     });
-    console.log('fetchAllUsers - response.data[0] :>> ', response.data[0]);
     return response.data;
   }
 );
@@ -47,7 +46,6 @@ export const addNewUser = createAsyncThunk(
         resolve({ data: userData });
       }, 3000);
     });
-    console.log('response from addNewUser inside usersSlice.js :>> ', response);
     return response.data;
   }
 );
@@ -58,7 +56,7 @@ export const usersSlice = createSlice({
   reducers: {
     signInUser(state, action) {
       console.log('signInUser - action.payload :>> ', action.payload);
-      state.currentUser = state.entities[action.payload];
+      state.currentUser = action.payload;
     },
   },
   extraReducers(builder) {
@@ -68,7 +66,6 @@ export const usersSlice = createSlice({
       })
       .addCase(fetchAllUsers.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        console.log('fetchAllUsers action.payload[1] :>> ', action.payload[1]);
         usersAdapter.upsertMany(state, action.payload);
       })
       .addCase(fetchAllUsers.rejected, (state, action) => {

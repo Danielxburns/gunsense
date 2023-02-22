@@ -12,7 +12,7 @@ export function IncidentSummary({ incident }) {
 
         <Box sx={{ display:'flex', justifyContent: 'space-between'}}>
           <Typography>{date}</Typography>
-          <IncidentButton incidentId={id.$oid} />
+          <IncidentButton incidentId={id.$oid} sx={{ alignSelf: 'baseline' }} />
         </Box>
         <Typography>
           {city}, {state}

@@ -17,7 +17,7 @@ export function LetterButton({letter}) {
 
   return (
     <>
-      <Button variant="contained" size="small" onClick={handleClickOpen}>
+      <Button variant="contained" size="small" color="info" onClick={handleClickOpen}>
         View Letter
       </Button>
       {open && <Letter

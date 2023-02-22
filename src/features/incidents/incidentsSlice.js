@@ -24,7 +24,6 @@ export const fetchAllIncidents = createAsyncThunk(
         resolve({ data: MOCK_INCIDENTS });
       }, 3000);
     });
-    console.log('fetchAllIncidents response.data[0] :>> ', response.data[0]);
     return response.data;
   }
 );
@@ -40,10 +39,6 @@ export const incidentsSlice = createSlice({
       })
       .addCase(fetchAllIncidents.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        console.log(
-          'fetchAllIncidents action.payload[0] :>> ',
-          action.payload[0]
-        );
         incidentsAdapter.upsertMany(state, action.payload);
       })
       .addCase(fetchAllIncidents.rejected, (state, action) => {
