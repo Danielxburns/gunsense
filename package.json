@@ -2,7 +2,7 @@
   "name": "gunsense",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://myusername.github.io/gunsense",
+  "homepage": "https://danielxburns.github.io/gunsense",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
