@@ -36,7 +36,7 @@ export const postNewLetter = createAsyncThunk(
     /* ------- THIS IS A MOCK API CALL ------- */
     const response = await new Promise((resolve, reject) => {
       setTimeout(() => {
-        const userData = { ...newLetter, id: nanoid() };
+        const userData = { ...newLetter, id: { $oid: nanoid() } };
         resolve({ data: userData });
       }, 3000);
     });
