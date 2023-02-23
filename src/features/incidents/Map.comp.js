@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import MOCK_MAP from '../../mockData/MOCK_MAP.png';
 
-export function Map() {
+export function MapComp() {
   return (
     <Box
       component="img"

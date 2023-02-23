@@ -1,15 +1,14 @@
 import { forwardRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { postNewLetter } from './lettersSlice'
+import { HelpButton } from './HelpButton';
 
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
-//import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
-import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
@@ -41,11 +40,6 @@ export function NewLetter({ open, handleClose, rep }) {
       </IconButton>
     </DialogActions>
       <CssBaseline />
-      <DialogTitle variant="h5" sx={{ textAlign: 'center' }}>
-        {rep && <div>
-          Letter to {rep.title} {rep.name}
-        </div>}
-      </DialogTitle>
       <DialogContent>
         <Box component="form" onSubmit={handleSubmit}
         sx={{ my: 3, px: 4, display: 'flex', flexDirection: 'column' }}>
@@ -54,13 +48,16 @@ export function NewLetter({ open, handleClose, rep }) {
           <div>Date: <TextField required variant="standard" size="small" name="date" defaultValue={new Date().toLocaleDateString()} /> </div>
           <TextField required multiline rows={5} sx={{ mt:3 }}
           name="body" label="Body" id="body" defaultValue={'Dear Government Official, \n'}></TextField>
-          <Button
-          type="submit"
-          variant="contained"
-          sx={{ mt: 3, mb: 2, maxWidth: 100 }}
-        >
-          Send
-        </Button>
+          <Box>
+            <Button
+            type="submit"
+            variant="contained"
+            sx={{ mt: 3, mb: 2, maxWidth: 100 }}
+                    >
+            Send
+                    </Button>
+                    <HelpButton/>
+          </Box>
         </Box>
       </DialogContent>
 

@@ -4,7 +4,7 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import { IncidentsList } from '../incidents/IncidentsList.comp';
-import { Map } from '../incidents/Map.comp';
+import { MapComp } from '../incidents/Map.comp';
 import { User } from '../users/User.comp';
 import { LettersList } from '../letters/LettersList.comp';
 
@@ -23,7 +23,7 @@ export default function Main() {
               <IncidentsList />
             </Grid>
             <Grid item xs={9}>
-              <Map />
+              <MapComp />
               <Grid
                 container
                 spacing={2}
