@@ -13,6 +13,8 @@ import { Actions } from './Actions';
 import { About } from './About';
 
 export default function ButtonAppBar() {
+
+  /* ------- SIGN-IN/SIGN-UP DIALOGS ------- */
   const [openSignIn, setOpenSignIn] = React.useState(false);
   const [openSignUp, setOpenSignUp] = React.useState(false);
 
@@ -29,7 +31,7 @@ export default function ButtonAppBar() {
     setOpenSignUp(false);
   };
 
-  /* ------------- POPPER STATE ------------ */
+  /* ------------- APP BAR POPPER STATE ------------ */
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [openAbout, setOpenAbout] = React.useState(false);
   const [openActions, setOpenActions] = React.useState(false);
@@ -71,7 +73,7 @@ export default function ButtonAppBar() {
           <Button color="inherit" onClick={handleClickOpenSignIn}>
             Sign-In{' '}
           </Button>
-          <SignIn open={openSignIn} handleClose={handleClose} />
+          <SignIn open={openSignIn} handleClose={handleClose} handleOpenSignUp={handleClickOpenSignUp}/>
           <Button color="inherit" onClick={handleClickOpenSignUp}>
             Sign-Up
           </Button>

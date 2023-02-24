@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { signInUser } from './usersSlice';
+import { signInWithGooglePopup, createUserDocumentFromAuth } from '../../utils/firebase.utils';
 
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -14,7 +15,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 
-export default function SignIn({ open, handleClose }) {
+export default function SignIn({ open, handleClose, handleOpenSignUp }) {
   const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
@@ -32,6 +33,14 @@ export default function SignIn({ open, handleClose }) {
       alert(`error logging in: ${error}`)
     }
   };
+
+  const logGoogleUser = async () => {
+    const { user } = await signInWithGooglePopup();
+    const userDocRef = await createUserDocumentFromAuth(user);
+    console.log('user :>> ', user);
+    console.log('userDocRef :>> ', userDocRef);
+    handleClose();
+  }
 
   return (
     <Dialog open={open} onClose={handleClose}>
@@ -80,6 +89,9 @@ export default function SignIn({ open, handleClose }) {
                 id="password"
                 autoComplete="current-password"
               />
+              <Link href="#" variant="body2">
+                Forgot password?
+              </Link>
               <Button
                 type="submit"
                 fullWidth
@@ -88,16 +100,12 @@ export default function SignIn({ open, handleClose }) {
               >
                 Sign In
               </Button>
+              <Button type="button" fullWidth variant="contained" sx={{ mb: 2 }} onClick={logGoogleUser}>Sign in with Google</Button>
               <Grid container>
-                <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
-                  </Link>
-                </Grid>
                 <Grid item>
-                  <Link href="#" variant="body2">
-                    {"Don't have an account? Sign Up"}
-                  </Link>
+                  <Button variant="body2" onClick={handleOpenSignUp} >
+                    Don't have an account? Sign Up
+                  </Button>
                 </Grid>
               </Grid>
             </Box>
