@@ -77,7 +77,7 @@ export default function ButtonAppBar() {
           <Button color="inherit" onClick={handleClickOpenSignUp}>
             Sign-Up
           </Button>
-          <SignUp open={openSignUp} handleClose={handleClose} />
+          <SignUp open={openSignUp} handleClose={handleClose} handleOpenSignIn={handleClickOpenSignIn}/>
         </Toolbar>
       </Container>
     </AppBar>

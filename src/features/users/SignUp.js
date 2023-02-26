@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addNewUser } from './usersSlice';
+
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -14,23 +14,25 @@ import DialogContent from '@mui/material/DialogContent';
 import IconButton from '@mui/material/IconButton';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 
-export default function SignUp({ open, handleClose }) {
+export default function SignUp({ open, handleClose, handleOpenSignIn }) {
   const dispatch = useDispatch();
   const [passwordError, setPasswordError] = useState(false);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    if (data.get('password') !== data.get('confirmPassword')) {
+    const formData = new FormData(event.currentTarget);
+    const signUpData = Object.fromEntries(formData.entries());
+
+    if (signUpData.password !== signUpData.confirmPassword) {
       setPasswordError(true);
+      // replace passwordError state with useFormControl hook
+      alert("Passwords don't match!");
       return;
     } else {
       setPasswordError(false);
     }
-    data.delete('confirmPassword');
-    const dataObj = Object.fromEntries(data.entries());
-    console.log('inside SignUp handleSubmit - dataObj :>> ', dataObj);
-    dispatch(addNewUser(dataObj));
+    delete signUpData.confirmPassword;
+    dispatch(addNewUser(signUpData));
   };
 
   return (
@@ -49,9 +51,7 @@ export default function SignUp({ open, handleClose }) {
           }}
         >
           <DialogTitle variant="h5">
-            <div>
-              Sign up
-            </div>
+            <div>Sign up</div>
           </DialogTitle>
           <DialogContent>
             <Box
@@ -95,6 +95,16 @@ export default function SignUp({ open, handleClose }) {
                     label="Address"
                     name="address"
                     autoComplete="address"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="displayName"
+                    label="Display Name"
+                    name="displayName"
+                    autoComplete="display-name"
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -170,9 +180,9 @@ export default function SignUp({ open, handleClose }) {
               </Button>
               <Grid container justifyContent="flex-end">
                 <Grid item>
-                  <Link href="#" variant="body2">
+                  <Button variant="body2" onClick={handleOpenSignIn}>
                     Already have an account? Sign in
-                  </Link>
+                  </Button>
                 </Grid>
               </Grid>
             </Box>

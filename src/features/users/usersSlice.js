@@ -3,12 +3,14 @@ import {
   createAsyncThunk,
   createSlice,
 } from '@reduxjs/toolkit';
-import { nanoid } from '@reduxjs/toolkit';
-import { MOCK_USERS } from '../../mockData/mockUsers';
-//import axios from 'axios';
+import {
+  createAuthUserWithEmailAndPassword,
+  createUserDocumentFromAuth,
+} from '../../utils/firebase.utils';
+import { getDoc } from 'firebase/firestore'
 
 const usersAdapter = createEntityAdapter({
-  selectId: (user) => user.id.$oid,
+  selectId: (user) => user.id,
 });
 
 const initialState = usersAdapter.getInitialState({
@@ -17,36 +19,28 @@ const initialState = usersAdapter.getInitialState({
   error: null,
 });
 
-// const url = 'http://localhost:5000'
-
-export const fetchAllUsers = createAsyncThunk(
-  'users/fetchAllUsers',
-  async () => {
-    /* --------- PLACE API CALL HERE --------- */
-    /* example: const response = await axios.get(`${url}/users`); */
-    /* ------- THIS IS A MOCK API CALL ------- */
-    const response = await new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve({ data: MOCK_USERS });
-      }, 3000);
-    });
-    return response.data;
-  }
-);
-
 export const addNewUser = createAsyncThunk(
   'users/addNewUser',
-  async (newuser) => {
-    /* --------- PLACE API CALL HERE --------- */
-    /* example: const response = await axios.post(`${url}/users`, newuser); */
-    /* ------- THIS IS A MOCK API CALL ------- */
-    const response = await new Promise((resolve, reject) => {
-      setTimeout(() => {
-        const userData = { ...newuser, id: { $oid: nanoid() } };
-        resolve({ data: userData });
-      }, 3000);
-    });
-    return response.data;
+  async (signUpData) => {
+    const { email, password } = signUpData;
+    delete signUpData.password;
+    try {
+      const { user } = await createAuthUserWithEmailAndPassword(
+        email,
+        password
+      );
+      const userDocRef = await createUserDocumentFromAuth(user, {
+        ...signUpData,
+      });
+      const userSnapshot = await getDoc(userDocRef);
+      return { id: userSnapshot.id, ...userSnapshot.data() }
+    } catch (error) {
+      if (error.code === 'auth/email-already-in-use') {
+        alert('Cannot create user. Email already in use');
+      } else {
+        console.log('error creating user :>> ', error.message);
+      }
+    }
   }
 );
 
@@ -61,24 +55,13 @@ export const usersSlice = createSlice({
   },
   extraReducers(builder) {
     builder
-      .addCase(fetchAllUsers.pending, (state, action) => {
-        state.status = 'fetching all users';
-      })
-      .addCase(fetchAllUsers.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        usersAdapter.upsertMany(state, action.payload);
-      })
-      .addCase(fetchAllUsers.rejected, (state, action) => {
-        state.status = 'failed';
-        console.log('error fetching all users:>> ', action.error);
-      })
-      .addCase(addNewUser.pending, (state, action) => {
+      .addCase(addNewUser.pending, (state) => {
         state.status = 'adding new user';
       })
       .addCase(addNewUser.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.currentUser = action.payload;
-        usersAdapter.addOne(state, action.payload);
+        usersAdapter.upsertOne(state, action.payload);
       })
       .addCase(addNewUser.rejected, (state, action) => {
         state.status = 'failed';
