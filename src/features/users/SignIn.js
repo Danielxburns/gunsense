@@ -25,9 +25,14 @@ export default function SignIn({ open, handleClose, handleOpenSignUp }) {
     const password = data.get('password')
     try {
       await signInAuthUserWithEmailAndPassword(email, password);
-      handleClose();
+      /* handleClose(); */
     } catch (error) {
-      alert("error logging in: ",error.message);
+      if(error.code === 'auth/user-not-found') {
+        alert('User not found. \nPlease sign up,\nor try a different account')
+      } else if (error.code === 'auth/wrong-password') {
+        alert('Wrong password. Try again.')
+      }
+      console.log("error code: ", error.code, "error message: ", error.message);
     }
   };
 

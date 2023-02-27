@@ -70,7 +70,7 @@ export function User() {
   function renderUsername(user) {
     return (
       <Typography>
-        {user ? `User: ${user.username || user.email}` : 'login required'}
+        {user ? `Welcome: ${user.displayName}!` : 'login required'}
       </Typography>
     );
   }

@@ -91,20 +91,20 @@ export default function SignUp({ open, handleClose, handleOpenSignIn }) {
                   <TextField
                     required
                     fullWidth
-                    id="address"
-                    label="Address"
-                    name="address"
-                    autoComplete="address"
+                    id="displayName"
+                    label="Display Name"
+                    name="displayName"
+                    autoComplete="display-name"
                   />
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
                     required
                     fullWidth
-                    id="displayName"
-                    label="Display Name"
-                    name="displayName"
-                    autoComplete="display-name"
+                    id="address"
+                    label="Address"
+                    name="address"
+                    autoComplete="address"
                   />
                 </Grid>
                 <Grid item xs={12}>

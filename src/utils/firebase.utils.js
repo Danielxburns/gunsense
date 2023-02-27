@@ -64,12 +64,16 @@ export const getUserDataFromAuth = async (userAuth) => {
 
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
   if (!email || !password) return;
-  return await createUserWithEmailAndPassword(auth, email, password);
+  try {
+    return await createUserWithEmailAndPassword(auth, email, password);
+  } catch (error) {
+    alert('error creating user: ', error.code, error.message)
+  }
 };
 
 export const signInAuthUserWithEmailAndPassword = async (email, password) => {
   if (!email || !password) return;
-  return await signInWithEmailAndPassword(auth, email, password)
+  return await signInWithEmailAndPassword(auth, email, password)    
 }
 
 export const signOutUser = () => signOut(auth);
