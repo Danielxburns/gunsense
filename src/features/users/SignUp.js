@@ -13,6 +13,15 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import IconButton from '@mui/material/IconButton';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
+import { ThemeProvider, createTheme } from '@mui/material';
+
+const theme = createTheme({
+  components: {
+    MuiButtonBase: {
+      defaultProps: {},
+    },
+  },
+});
 
 export default function SignUp({ open, handleClose, handleOpenSignIn }) {
   const dispatch = useDispatch();
@@ -36,6 +45,7 @@ export default function SignUp({ open, handleClose, handleOpenSignIn }) {
   };
 
   return (
+    <ThemeProvider theme={theme}>
     <Dialog open={open} onClose={handleClose}>
       <DialogActions>
         <IconButton onClick={handleClose} aria-label="cancel">
@@ -50,8 +60,8 @@ export default function SignUp({ open, handleClose, handleOpenSignIn }) {
             alignItems: 'center',
           }}
         >
-          <DialogTitle variant="h5">
-            <div>Sign up</div>
+          <DialogTitle component="div" variant="h5"  sx={{ pt: 0 }}>
+            Sign up
           </DialogTitle>
           <DialogContent>
             <Box
@@ -59,7 +69,7 @@ export default function SignUp({ open, handleClose, handleOpenSignIn }) {
               noValidate
               onSubmit={handleSubmit}
               sx={{
-                mt: 3,
+                mt: 1,
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -94,7 +104,6 @@ export default function SignUp({ open, handleClose, handleOpenSignIn }) {
                     id="displayName"
                     label="Display Name"
                     name="displayName"
-                    autoComplete="display-name"
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -104,37 +113,37 @@ export default function SignUp({ open, handleClose, handleOpenSignIn }) {
                     id="address"
                     label="Address"
                     name="address"
-                    autoComplete="address"
+                    autoComplete="street-address"
                   />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={6}>
                   <TextField
                     required
                     fullWidth
                     id="city"
                     label="City"
                     name="city"
-                    autoComplete="city"
+                    autoComplete="address-level2"
                   />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={6} sm={3}>
                   <TextField
                     required
                     fullWidth
                     id="state"
                     label="State"
                     name="state"
-                    autoComplete="state"
+                    autoComplete="address-level1"
                   />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={6} sm={3}>
                   <TextField
                     required
                     fullWidth
                     id="zip"
                     label="Zip Code"
                     name="zip"
-                    autoComplete="zip"
+                    autoComplete="postal-code"
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -178,10 +187,10 @@ export default function SignUp({ open, handleClose, handleOpenSignIn }) {
               >
                 Sign Up
               </Button>
-              <Grid container justifyContent="flex-end">
+              <Grid container justifyContent="center">
                 <Grid item>
                   <Button variant="body2" onClick={handleOpenSignIn}>
-                    Already have an account? Sign in
+                    Already have an account? Sign in!
                   </Button>
                 </Grid>
               </Grid>
@@ -190,5 +199,6 @@ export default function SignUp({ open, handleClose, handleOpenSignIn }) {
         </Box>
       </Container>
     </Dialog>
+    </ThemeProvider>
   );
 }

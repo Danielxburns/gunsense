@@ -24,7 +24,9 @@ export function RepsButton(address) {
       >
         View Reps
       </Button>
-      {open && <RepsList open={open} handleClose={handleClose} address={address} />}
+      {open && (
+        <RepsList open={open} handleClose={handleClose} address={address} />
+      )}
     </>
   );
 }
