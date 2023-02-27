@@ -110,9 +110,9 @@ export default function SignUp({ open, handleClose, handleOpenSignIn }) {
                   <TextField
                     required
                     fullWidth
-                    id="address"
-                    label="Address"
-                    name="address"
+                    id="street"
+                    label="Street"
+                    name="street"
                     autoComplete="street-address"
                   />
                 </Grid>

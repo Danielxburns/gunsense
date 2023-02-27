@@ -14,7 +14,9 @@ const initialState = repsAdapter.getInitialState({
   error: null,
 });
 
-export const fetchReps = createAsyncThunk('reps/fetchReps', async () => {
+export const fetchReps = createAsyncThunk('reps/fetchReps', async (address) => {
+  console.log('address :>> ', address);
+  if(!address) return;
   const response = await new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve({ data: MOCK_REPS });

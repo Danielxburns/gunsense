@@ -76,7 +76,7 @@ function SummariesList() {
 
   function getSummaries() {
     return incidents.map((incident, index) => (
-      <ListItem key={index} divider={true}>
+      <ListItem key={index} divider={true} sx={{ px: 1}}>
         <IncidentSummary incident={incident} />
       </ListItem>
     ));

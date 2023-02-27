@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentUser } from '../features/users/usersSlice';
 import { fetchAllIncidents } from '../features/incidents/incidentsSlice';
 import { fetchAllLetters } from '../features/letters/lettersSlice';
-import { fetchReps } from '../features/reps/repsSlice';
+/* import { fetchReps } from '../features/reps/repsSlice'; */
 import { getUserData } from '../features/users/usersSlice';
 
 import CssBaseline from '@mui/material/CssBaseline';
@@ -16,11 +16,10 @@ function App() {
   const dispatch = useDispatch();
   const incidentsStatus = useSelector((state) => state.incidents.status);
   const lettersStatus = useSelector((state) => state.letters.status);
-  const repsStatus = useSelector((state) => state.reps.status);
+  /* const repsStatus = useSelector((state) => state.reps.status); */
 
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener((userAuth) => {
-      console.log('inside App.js useEffect - userAuth :>> ', userAuth);
       if (userAuth) {
         dispatch(getUserData(userAuth))
       } else {
@@ -42,11 +41,11 @@ function App() {
     }
   }, [lettersStatus, dispatch]);
 
-  useEffect(() => {
+/*   useEffect(() => {
     if (repsStatus === 'idle') {
       dispatch(fetchReps());
     }
-  }, [repsStatus, dispatch]);
+  }, [repsStatus, dispatch]); */
 
   return (
     <>

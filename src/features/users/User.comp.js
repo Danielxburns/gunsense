@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchReps } from '../reps/repsSlice';
 
 import { RepsButton } from '../reps/RepsButton';
 import { ComposeButton } from '../letters/ComposeButton';
@@ -10,7 +11,6 @@ import Typography from '@mui/material/Typography';
 import { cyan } from '@mui/material/colors';
 import { ThemeProvider, createTheme } from '@mui/material';
 
-
 const theme = createTheme({
   components: {
     MuiButtonBase: {
@@ -20,13 +20,20 @@ const theme = createTheme({
 });
 
 export function User() {
+  const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.users.currentUser);
 
   useEffect(() => renderUsername, [currentUser]);
 
+  useEffect(() => {
+    if (currentUser) {
+      const { street, city, state, zip } = currentUser;
+      dispatch(fetchReps({ street, city, state, zip }));
+    }
+  }, [dispatch, currentUser]);
+
   return (
     <ThemeProvider theme={theme}>
-      
       <Box
         sx={{
           border: '1px solid',
@@ -48,7 +55,9 @@ export function User() {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-around',
-            flex: 1,
+            flex: '1',
+            overflow: 'auto',
+            whiteSpace: 'pre'
           }}
         >
           {renderUsername(currentUser)}
@@ -57,6 +66,7 @@ export function User() {
             variant="contained"
             color="success"
             size="small"
+            whiteSpace="pre"
             disabled={!currentUser}
           >
             Your Letters
