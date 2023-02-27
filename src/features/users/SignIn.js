@@ -1,8 +1,6 @@
-import { useDispatch } from 'react-redux';
-import { signInUser } from './usersSlice';
 import {
-  signInWithGooglePopup,
-  createUserDocumentFromAuth,
+  /* signInWithGooglePopup, */
+  signInAuthUserWithEmailAndPassword,
 } from '../../utils/firebase.utils';
 
 import Dialog from '@mui/material/Dialog';
@@ -19,32 +17,28 @@ import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 
 export default function SignIn({ open, handleClose, handleOpenSignUp }) {
-  const dispatch = useDispatch();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    const email = data.get('email')
+    const password = data.get('password')
     try {
-      dispatch(
-        signInUser({
-          email: data.get('email'),
-          password: data.get('password'),
-        })
-      );
+      await signInAuthUserWithEmailAndPassword(email, password);
       handleClose();
     } catch (error) {
-      alert(`error logging in: ${error}`);
+      alert("error logging in: ",error.message);
     }
   };
 
-  const signInWithGoogle = async () => {
+/*   const signInWithGoogle = async () => {
     try {
       const { user } = await signInWithGooglePopup();
-      await createUserDocumentFromAuth(user);
+      dispatch(getUserData(user))
     } catch (error) {
       console.log('error signing in with Google :>> ', error.message);
     }
-  };
+  }; */
 
   return (
     <Dialog open={open} onClose={handleClose}>
@@ -102,7 +96,7 @@ export default function SignIn({ open, handleClose, handleOpenSignUp }) {
               >
                 Sign In
               </Button>
-              <Button
+              {/* <Button
                 type="button"
                 fullWidth
                 variant="contained"
@@ -110,7 +104,7 @@ export default function SignIn({ open, handleClose, handleOpenSignUp }) {
                 onClick={signInWithGoogle}
               >
                 Sign in with Google
-              </Button>
+              </Button> */}
               <Grid container>
                 <Grid item>
                   <Button variant="body2" onClick={handleOpenSignUp}>
