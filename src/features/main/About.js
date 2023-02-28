@@ -23,6 +23,7 @@ export function About() {
         better laws, better law enforcement, less gun violence, and a safer
         healthier society for all.
       </Typography>
+      <div>* Representative information powered by the <a href="https://developers.google.com/civic-information?authuser=1">Civic Information API</a>. </div>
     </Box>
   );
 }

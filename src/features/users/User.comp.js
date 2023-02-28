@@ -57,21 +57,20 @@ export function User() {
             justifyContent: 'space-around',
             flex: '1',
             overflow: 'auto',
-            whiteSpace: 'pre'
           }}
         >
           {renderUsername(currentUser)}
-          <RepsButton disabled={!currentUser} />
+          <RepsButton sx={{ m: 1 }} disabled={!currentUser} />
           <Button
+            sx={{ my: 0.5 }}
             variant="contained"
             color="success"
             size="small"
-            whiteSpace="pre"
             disabled={!currentUser}
           >
             Your Letters
           </Button>
-          <ComposeButton disabled={!currentUser} />
+          <ComposeButton sx={{ m: 1 }} disabled={!currentUser} />
         </Box>
       </Box>
     </ThemeProvider>

@@ -7,12 +7,11 @@ import { RepsButton } from '../reps/RepsButton';
 export function IncidentSummary({ incident }) {
   const { id, date, city, state, address, killed, injured } = incident;
   return (
-    <Box sx={{ width: 'inherit', whiteSpace: "pre", overflow: 'auto' }}>
-      <Paper /* variant="outlined"  */ elevation={2} sx={{  p:1, }}>
-
-        <Box sx={{ display:'flex', justifyContent: 'space-between', }}>
-          <Typography>{date}</Typography>
-          <IncidentButton incidentId={id.$oid} sx={{ alignSelf: 'baseline' }} />
+    <Box sx={{ width: 'inherit', whiteSpace: 'pre', overflow: 'auto' }}>
+      <Paper /* elevation={2} */ sx={{ p: 1, minWidth: 'auto' }}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Typography>{date} </Typography>
+          <IncidentButton incidentId={id.$oid} />
         </Box>
         <Typography>
           {city}, {state}
@@ -20,7 +19,7 @@ export function IncidentSummary({ incident }) {
         <Typography>{address}</Typography>
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Typography>
-            Killed: {killed} Injured: {injured}
+            Killed: {killed} Injured: {injured}{' '}
           </Typography>
           <RepsButton />
         </Box>

@@ -14,9 +14,9 @@ export default function Main() {
       <ButtonAppBar />
       <Container maxWidth="xlg">
         <Box
-          sx={{
+        /* sx={{
             flexGrow: 1,
-          }}
+          }} */
         >
           <Grid container spacing={2}>
             <Grid item xs={3}>

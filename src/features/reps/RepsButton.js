@@ -19,7 +19,6 @@ export function RepsButton(address) {
         variant="contained"
         color="secondary"
         size="small"
-        whiteSpace="no-wrap"
         open={open}
         onClick={handleClickOpen}
       >

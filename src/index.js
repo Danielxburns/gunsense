@@ -35,8 +35,8 @@ const theme = createTheme({
           lineHeight: 0.8,
           letterSpacing: '0.02em',
           height: '1.2rem',
-          whiteSpace: 'nowrap',
           overflow: 'hidden',
+          minWidth: 'min-content'
         },
       },
     },
