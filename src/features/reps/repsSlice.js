@@ -55,18 +55,18 @@ export const repsSlice = createSlice({
   },
 });
 
-function sortReps(obj) {
-  return obj.offices.reduce(
-    (officialsArr, office) => {
-      if (office.officialIndices.length) {
-        let idx = office.officialIndices[0]
-        let rep = officialsArr[idx]        
-        rep = { ...rep, 'officeName': office.name, 'level': office.levels[0] }
-        officialsArr[idx] = rep
+function sortReps(obj) {                //take Civics object
+  return obj.offices.reduce(            // reduce the offices array
+    (officialsArr, office) => {         // for each office
+      if (office.officialIndices.length) {  // if seat is not empty
+        let idx = office.officialIndices[0] // get the index of the person in office
+        let rep = officialsArr[idx]         // get person object by direct look up
+        rep = { ...rep, 'officeName': office.name, 'level': office.levels[0] } // spread in the office name and level of gov't
+        officialsArr[idx] = rep         // set the new person object in the accumulator array
       }
-      return officialsArr;
+      return officialsArr;              // when loop is done, return the new array of officials
     },
-    [ ...obj.officials ]
+    [ ...obj.officials ]                // spread in the officials array as the initial value
   );
 }
 

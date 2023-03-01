@@ -40,7 +40,7 @@ export default function SignIn({ open, handleClose, handleOpenSignUp }) {
       } else if (error.code === 'auth/wrong-password') {
         alert('Wrong password. Try again.');
       }
-      console.log('error code: ', error.code, 'error message: ', error.message);
+      console.error('error code: ', error.code, 'error message: ', error.message);
     }
   };
 
