@@ -1627,20 +1627,20 @@ const data = {
   ],
 };
 
-function sortReps(obj) {
-  const reps = obj.offices.reduce(
-    (officialsArr, office) => {
-      if (office.officialIndices.length) {
-        let idx = office.officialIndices[0]
-        let rep = officialsArr[idx]        
-        rep = { ...rep, 'officeName': office.name, 'level': office.levels[0] }
-        officialsArr[idx] = rep
+function sortReps(obj) {                //take Civics object
+  return obj.offices.reduce(            // reduce the offices array
+    (officialsArr, office) => {         // for each office
+      if (office.officialIndices.length) {  // if seat is not empty 
+        office.officialIndices.map((idx) => { // get the officialsArr index of the person in office  
+          let rep = officialsArr[idx]         // get person object by direct look up
+          rep = { "id": idx, "officeName": office.name, "level": office.levels[0], ...rep } // create a new rep object with an id, office name and level of gov't added
+          officialsArr[idx] = rep         // replace existing person obj with updated person object in the accumulator array        
+        })
       }
-      return officialsArr;
+      return officialsArr;              // when loop is done, return the new array of officials
     },
-    [ ...obj.officials ]
+    [ ...obj.officials ]                // spread in the officials array as the initial value
   );
-  return reps;
 }
 
-sortReps(data);
+console.log(sortReps(data));

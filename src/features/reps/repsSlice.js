@@ -9,7 +9,7 @@ import axios from 'axios';
 /* const CIVIC_API_KEY = process.env.REACT_APP_CIVIC_API_KEY; */
 
 const repsAdapter = createEntityAdapter({
-  selectId: (rep) => rep.name,
+  selectId: (rep) => rep.id,
 });
 
 const initialState = repsAdapter.getInitialState({
@@ -58,11 +58,12 @@ export const repsSlice = createSlice({
 function sortReps(obj) {                //take Civics object
   return obj.offices.reduce(            // reduce the offices array
     (officialsArr, office) => {         // for each office
-      if (office.officialIndices.length) {  // if seat is not empty
-        let idx = office.officialIndices[0] // get the index of the person in office
-        let rep = officialsArr[idx]         // get person object by direct look up
-        rep = { ...rep, 'officeName': office.name, 'level': office.levels[0] } // spread in the office name and level of gov't
-        officialsArr[idx] = rep         // set the new person object in the accumulator array
+      if (office.officialIndices.length) {  // if seat is not empty 
+        office.officialIndices.map((idx) => { // get the officialsArr index of the person in office  
+          let rep = officialsArr[idx]         // get person object by direct look up
+          rep = { "id": idx, "officeName": office.name, "level": office.levels[0], ...rep } // create a new rep object with an id, office name and level of gov't added
+          return officialsArr[idx] = rep         // replace existing person obj with updated person object in the accumulator array        
+        })
       }
       return officialsArr;              // when loop is done, return the new array of officials
     },
