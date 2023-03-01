@@ -4,7 +4,7 @@ import { selectAllReps /* fetchReps */ } from './repsSlice';
 
 import { RepCard } from './RepCard';
 
-import CssBaseline from '@mui/material/CssBaseline';
+//import CssBaseline from '@mui/material/CssBaseline';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
@@ -38,25 +38,33 @@ export function RepsList({ open, handleClose, address }) {
   }, [repsStatus]);
 
   return (
-    <Dialog open={open} onClose={handleClose} fullwidth="true" maxWidth="md">
-      <CssBaseline />
-      <DialogActions>
-        <IconButton onClick={handleClose} aria-label="cancel">
-          <CancelOutlinedIcon />
-        </IconButton>
-      </DialogActions>
-      <Container maxWidth="lg">
-        <DialogTitle variant="h5" sx={{ textAlign: 'center' }}>
+    <Container maxWidth="lg">
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        fullwidth="true"
+        maxWidth="md"
+        scroll="paper"
+      >
+        <DialogActions sx={{ position: 'absolute', top: 0, right: 0 }}>
+          <IconButton onClick={handleClose} aria-label="close">
+            <CancelOutlinedIcon />
+          </IconButton>
+        </DialogActions>
+        <DialogTitle
+          variant="h5"
+          sx={{ textAlign: 'center' }}
+          divider={true}
+        >
           <div>Representatives List</div>
         </DialogTitle>
-        <DialogContent>
-          <Box sx={{ mt: 3 }}>
-            <CssBaseline />
+        <DialogContent dividers={true}>
+          <Box /* sx={{ mt: 3 }} */>
             {reps}
           </Box>
         </DialogContent>
-      </Container>
-    </Dialog>
+      </Dialog>
+    </Container>
   );
 }
 
