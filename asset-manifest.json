@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/gunsense/static/css/main.18a10fbf.css",
-    "main.js": "/gunsense/static/js/main.56c98d5d.js",
+    "main.js": "/gunsense/static/js/main.e9f03273.js",
     "static/js/787.e82810b6.chunk.js": "/gunsense/static/js/787.e82810b6.chunk.js",
     "static/media/MOCK_MAP.png": "/gunsense/static/media/MOCK_MAP.48d5b2537b9b6f400c17.png",
     "static/media/roboto-all-500-normal.woff": "/gunsense/static/media/roboto-all-500-normal.0ab669b7a0d19b178f57.woff",
@@ -40,11 +40,11 @@
     "static/media/roboto-greek-ext-700-normal.woff2": "/gunsense/static/media/roboto-greek-ext-700-normal.bd9854c751441ccc1a70.woff2",
     "index.html": "/gunsense/index.html",
     "main.18a10fbf.css.map": "/gunsense/static/css/main.18a10fbf.css.map",
-    "main.56c98d5d.js.map": "/gunsense/static/js/main.56c98d5d.js.map",
+    "main.e9f03273.js.map": "/gunsense/static/js/main.e9f03273.js.map",
     "787.e82810b6.chunk.js.map": "/gunsense/static/js/787.e82810b6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.18a10fbf.css",
-    "static/js/main.56c98d5d.js"
+    "static/js/main.e9f03273.js"
   ]
 }
