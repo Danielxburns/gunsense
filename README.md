@@ -33,7 +33,7 @@ leaders with their ideas and concerns. Which, in time, will lead to
 better laws, better law enforcement, less gun violence, and a safer
 healthier society for all.
 
-*This application was started as an entry for DeveloperWeek 2023 Hackathon. [presentation video](https://www.youtube.com/watch?v=kO4aICMYYWs)
+*This application was started as an entry for DeveloperWeek 2023 Hackathon. Presentation video [here](https://www.youtube.com/watch?v=kO4aICMYYWs)
 
 ## License
 
