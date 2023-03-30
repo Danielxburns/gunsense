@@ -14,9 +14,9 @@ A gun violence tracking app that connects users to government officials that can
 
 # APIs and source information
 
-[Gun Violence Archive](https://www.gunviolencearchive.org/last-72-hours)
-[Google Civic Information API](https://developers.google.com/civic-information?authuser=1)
-[Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript)
+[Gun Violence Archive](https://www.gunviolencearchive.org/last-72-hours)  
+[Google Civic Information API](https://developers.google.com/civic-information)  
+[Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript)  
 
 # About
 Have you or anyone you’ve loved ever been affected by gun violence? Do
@@ -33,7 +33,7 @@ leaders with their ideas and concerns. Which, in time, will lead to
 better laws, better law enforcement, less gun violence, and a safer
 healthier society for all.
 
-This application was started as an entry for DeveloperWeek 2023 Hackathon.
+*This application was started as an entry for DeveloperWeek 2023 Hackathon.
 
 ## License
 
