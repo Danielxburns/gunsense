@@ -1,26 +1,22 @@
 
-# GunSense
+# [GunSense](https://danielxburns.github.io/gunsense/)
 
-A web app that tracks gun violence and the connects users with the government officials that can do something about it.
+A gun violence tracking app that connects users to government officials that can do something about it.
 
-# Link
-
-[GunSense](https://danielxburns.github.io/gunsense/)
-
-# Tech
+# Tech Stack
 
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
 ![MUI](https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white)
 ![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
-![Github Pages](https://img.shields.io/badge/github%20pages-121013?style=for-the-badge&logo=github&logoColor=white)
 ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
+![Github Pages](https://img.shields.io/badge/github%20pages-121013?style=for-the-badge&logo=github&logoColor=white)
 
-# APIs
+# APIs and source information
 
-Gun Violence Archive
-Google Civic Information API
-Google Maps
+[Gun Violence Archive](https://www.gunviolencearchive.org/last-72-hours)
+[Google Civic Information API](https://developers.google.com/civic-information?authuser=1)
+[Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript)
 
 # About
 Have you or anyone you’ve loved ever been affected by gun violence? Do
@@ -41,4 +37,4 @@ This application was started as an entry for DeveloperWeek 2023 Hackathon.
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT licence](https://choosealicense.com/licenses/mit/)
