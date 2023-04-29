@@ -35,6 +35,15 @@ healthier society for all.
 
 *This application was started as an entry for DeveloperWeek 2023 Hackathon. Presentation video [here](https://www.youtube.com/watch?v=kO4aICMYYWs)
 
+## Roadmap
+  - finish connecting Represenative contact links to respective buttons
+  - find a way to scrape data from GVA - last 72 hours
+  - connect to google maps API
+  - connect DraftJS to letters section
+  - consider mailto options
+  - add info from resouces such as [https://www.senate.gov/general/contacting.htm](https://www.senate.gov/general/contacting.htm) and [https://www.house.gov/representatives/find-your-representative](https://www.house.gov/representatives/find-your-representative)
+
+
 ## License
 
 [MIT licence](https://choosealicense.com/licenses/mit/)
