@@ -1,9 +1,12 @@
 
-# [GunSense](https://danielxburns.github.io/gunsense/)
+# GunSense
 
 A gun violence tracking app that connects users to government officials that can do something about it.
 
-# Tech Stack
+## Link
+[GunSense](https://danielxburns.github.io/gunsense/)
+
+## Tech Stack
 
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
@@ -12,13 +15,13 @@ A gun violence tracking app that connects users to government officials that can
 ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
 ![Github Pages](https://img.shields.io/badge/github%20pages-121013?style=for-the-badge&logo=github&logoColor=white)
 
-# APIs and source information
+## APIs and source information
 
 [Gun Violence Archive](https://www.gunviolencearchive.org)  
 [Google Civic Information API](https://developers.google.com/civic-information)  
 [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript)  
 
-# About
+## About
 Have you or anyone you’ve loved ever been affected by gun violence? Do
 you want to do something about it? Well, you CAN with GunSense.
 
