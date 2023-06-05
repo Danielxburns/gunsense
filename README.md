@@ -1,46 +1,61 @@
-# Getting Started with Create React App and Redux
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# GunSense
 
-## Available Scripts
+A gun violence tracking app that connects users to government officials that can do something about it.
 
-In the project directory, you can run:
+## Link
+[GunSense](https://danielxburns.github.io/gunsense/)
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
+![MUI](https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
+![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
+![Github Pages](https://img.shields.io/badge/github%20pages-121013?style=for-the-badge&logo=github&logoColor=white)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## APIs and source information
 
-### `npm test`
+[Gun Violence Archive](https://www.gunviolencearchive.org)  
+[Google Civic Information API](https://developers.google.com/civic-information)  
+[Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript)  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## About
+Have you or anyone you’ve loved ever been affected by gun violence? Do
+you want to do something about it? Well, you CAN with GunSense.
 
-### `npm run build`
+GunSense delivers up-to-date information about the gun violence
+happening in our communities and provides a platform for you to connect
+to the government officials who can affect the changes that you want to
+see.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+By providing quality information on an actionable platform GunSense
+allows for an aware and informed citizenry to engage with and empower
+leaders with their ideas and concerns. Which, in time, will lead to
+better laws, better law enforcement, less gun violence, and a safer
+healthier society for all.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+*This application was started as an entry for DeveloperWeek 2023 Hackathon. Presentation video [here](https://www.youtube.com/watch?v=kO4aICMYYWs)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+I have continued working on the application afterwards as follows:
+  - created project on Firebase
+  - set up authentication and created Firestore DB for users 
+  - created utility functions to sign up, sign in, and sign out users and connected them to relevant components
+  - created request to fetch user's gov't representatives from Google Civic Information API
+  - reshaped response data and displayed in list of representative cards
+  - set up hosting on Firebase with custom domain [https://gunsense.danielburns.info/](https://gunsense.danielburns.info/)
 
-### `npm run eject`
+## Roadmap
+  - finish connecting Represenative contact links to respective buttons
+  - find a way to scrape data from GVA - last 72 hours
+  - connect to google maps API
+  - connect DraftJS to letters section
+  - add letters DB to Firebase and connect API endpoints
+  - consider mailto options
+  - add info from resouces such as [https://www.senate.gov/general/contacting.htm](https://www.senate.gov/general/contacting.htm) and [https://www.house.gov/representatives/find-your-representative](https://www.house.gov/representatives/find-your-representative)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## License
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+[MIT licence](https://choosealicense.com/licenses/mit/)

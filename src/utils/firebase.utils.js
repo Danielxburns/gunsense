@@ -34,10 +34,7 @@ export const signInWithGooglePopup = () =>
 
 export const db = getFirestore();
 
-export const createUserDocument = async (
-  userAuth,
-  userInfo = {}
-) => {
+export const createUserDocument = async (userAuth, userInfo = {}) => {
   if (!userAuth) return;
   const userDocRef = doc(db, 'users', userAuth.uid);
   const userSnapshot = await getDoc(userDocRef);
@@ -56,26 +53,27 @@ export const createUserDocument = async (
 };
 
 export const getUserDataFromAuth = async (userAuth) => {
-  if(!userAuth) return
+  if (!userAuth) return;
   const userDocRef = doc(db, 'users', userAuth.uid);
   const userSnapshot = await getDoc(userDocRef);
   return { id: userSnapshot.id, ...userSnapshot.data() };
-}
+};
 
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
   if (!email || !password) return;
   try {
     return await createUserWithEmailAndPassword(auth, email, password);
   } catch (error) {
-    alert('error creating user: ', error.code, error.message)
+    alert('error creating user: ', error.code, error.message);
   }
 };
 
 export const signInAuthUserWithEmailAndPassword = async (email, password) => {
   if (!email || !password) return;
-  return await signInWithEmailAndPassword(auth, email, password)    
-}
+  return await signInWithEmailAndPassword(auth, email, password);
+};
 
 export const signOutUser = () => signOut(auth);
 
-export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback)
+export const onAuthStateChangedListener = (callback) =>
+  onAuthStateChanged(auth, callback);

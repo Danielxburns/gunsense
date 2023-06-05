@@ -16,7 +16,6 @@ function App() {
   const dispatch = useDispatch();
   const incidentsStatus = useSelector((state) => state.incidents.status);
   const lettersStatus = useSelector((state) => state.letters.status);
-  /* const repsStatus = useSelector((state) => state.reps.status); */
 
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener((userAuth) => {
@@ -31,21 +30,15 @@ function App() {
 
   useEffect(() => {
     if (incidentsStatus === 'idle') {
-      dispatch(fetchAllIncidents());
+      dispatch(fetchAllIncidents()); // currently fetches from local mockData
     }
   }, [incidentsStatus, dispatch]);
 
   useEffect(() => {
     if (lettersStatus === 'idle') {
-      dispatch(fetchAllLetters());
+      dispatch(fetchAllLetters()); // currently fetches from local mockData
     }
   }, [lettersStatus, dispatch]);
-
-/*   useEffect(() => {
-    if (repsStatus === 'idle') {
-      dispatch(fetchReps());
-    }
-  }, [repsStatus, dispatch]); */
 
   return (
     <>
