@@ -4,7 +4,7 @@
 A gun violence tracking app that connects users to government officials that can do something about it.
 
 ## Link
-[GunSense](https://danielxburns.github.io/gunsense/)
+[GunSense](https://gunsense.danielburns.info/)
 
 ## Tech Stack
 
