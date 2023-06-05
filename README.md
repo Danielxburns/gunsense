@@ -38,11 +38,20 @@ healthier society for all.
 
 *This application was started as an entry for DeveloperWeek 2023 Hackathon. Presentation video [here](https://www.youtube.com/watch?v=kO4aICMYYWs)
 
+I have continued working on the application afterwards as follows:
+  - created project on Firebase
+  - set up authentication and created Firestore DB for users 
+  - created utility functions to sign up, sign in, and sign out users and connected them to relevant components
+  - created request to fetch user's gov't representatives from Google Civic Information API
+  - reshaped response data and displayed in list of representative cards
+  - set up hosting on Firebase with custom domain [https://gunsense.danielburns.info/](https://gunsense.danielburns.info/)
+
 ## Roadmap
   - finish connecting Represenative contact links to respective buttons
   - find a way to scrape data from GVA - last 72 hours
   - connect to google maps API
   - connect DraftJS to letters section
+  - add letters DB to Firebase and connect API endpoints
   - consider mailto options
   - add info from resouces such as [https://www.senate.gov/general/contacting.htm](https://www.senate.gov/general/contacting.htm) and [https://www.house.gov/representatives/find-your-representative](https://www.house.gov/representatives/find-your-representative)
 

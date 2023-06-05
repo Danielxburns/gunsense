@@ -30,13 +30,13 @@ function App() {
 
   useEffect(() => {
     if (incidentsStatus === 'idle') {
-      dispatch(fetchAllIncidents());
+      dispatch(fetchAllIncidents()); // currently fetches from local mockData
     }
   }, [incidentsStatus, dispatch]);
 
   useEffect(() => {
     if (lettersStatus === 'idle') {
-      dispatch(fetchAllLetters());
+      dispatch(fetchAllLetters()); // currently fetches from local mockData
     }
   }, [lettersStatus, dispatch]);
 
