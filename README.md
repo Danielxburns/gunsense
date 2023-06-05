@@ -56,6 +56,11 @@ I have continued working on the application afterwards as follows:
   - add info from resouces such as [https://www.senate.gov/general/contacting.htm](https://www.senate.gov/general/contacting.htm) and [https://www.house.gov/representatives/find-your-representative](https://www.house.gov/representatives/find-your-representative)
 
 
+## Deploy to Firebase
+  - first merge your feature branch to main on github and resolve any conflicts
+  - then merge main branch to 'live' branch. Project will be deployed automatically (hopefully).
+
+
 ## License
 
 [MIT licence](https://choosealicense.com/licenses/mit/)
