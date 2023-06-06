@@ -47,7 +47,7 @@ I have continued working on the application afterwards as follows:
   - set up hosting on Firebase with custom domain [https://gunsense.danielburns.info/](https://gunsense.danielburns.info/)
 
 ## Roadmap
-  - finish connecting Represenative contact links to respective buttons
+  - finish connecting Representative contact links to respective buttons
   - find a way to scrape data from GVA - last 72 hours
   - connect to google maps API
   - connect DraftJS to letters section
