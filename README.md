@@ -1,10 +1,10 @@
-
 # GunSense
 
 A gun violence tracking app that connects users to government officials that can do something about it.
 
 ## Link
-[GunSense](https://danielxburns.github.io/gunsense/)
+
+[GunSense](https://gunsense.danielburns.info/)
 
 ## Tech Stack
 
@@ -19,9 +19,10 @@ A gun violence tracking app that connects users to government officials that can
 
 [Gun Violence Archive](https://www.gunviolencearchive.org)  
 [Google Civic Information API](https://developers.google.com/civic-information)  
-[Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript)  
+[Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript)
 
 ## About
+
 Have you or anyone you’ve loved ever been affected by gun violence? Do
 you want to do something about it? Well, you CAN with GunSense.
 
@@ -36,30 +37,31 @@ leaders with their ideas and concerns. Which, in time, will lead to
 better laws, better law enforcement, less gun violence, and a safer
 healthier society for all.
 
-*This application was started as an entry for DeveloperWeek 2023 Hackathon. Presentation video [here](https://www.youtube.com/watch?v=kO4aICMYYWs)
+\*This application was started as an entry for DeveloperWeek 2023 Hackathon. Presentation video [here](https://www.youtube.com/watch?v=kO4aICMYYWs)
 
 I have continued working on the application afterwards as follows:
-  - created project on Firebase
-  - set up authentication and created Firestore DB for users 
-  - created utility functions to sign up, sign in, and sign out users and connected them to relevant components
-  - created request to fetch user's gov't representatives from Google Civic Information API
-  - reshaped response data and displayed in list of representative cards
-  - set up hosting on Firebase with custom domain [https://gunsense.danielburns.info/](https://gunsense.danielburns.info/)
+
+- created project on Firebase
+- set up authentication and created Firestore DB for users
+- created utility functions to sign up, sign in, and sign out users and connected them to relevant components
+- created request to fetch user's gov't representatives from Google Civic Information API
+- reshaped response data and displayed in list of representative cards
+- set up hosting on Firebase with custom domain [https://gunsense.danielburns.info/](https://gunsense.danielburns.info/)
 
 ## Roadmap
-  - finish connecting Representative contact links to respective buttons
-  - find a way to scrape data from GVA - last 72 hours
-  - connect to google maps API
-  - connect DraftJS to letters section
-  - add letters DB to Firebase and connect API endpoints
-  - consider mailto options
-  - add info from resouces such as [https://www.senate.gov/general/contacting.htm](https://www.senate.gov/general/contacting.htm) and [https://www.house.gov/representatives/find-your-representative](https://www.house.gov/representatives/find-your-representative)
 
+- finish connecting Representative contact links to respective buttons
+- find a way to scrape data from GVA - last 72 hours
+- connect to google maps API
+- connect DraftJS to letters section
+- add letters DB to Firebase and connect API endpoints
+- consider mailto options
+- add info from resouces such as [https://www.senate.gov/general/contacting.htm](https://www.senate.gov/general/contacting.htm) and [https://www.house.gov/representatives/find-your-representative](https://www.house.gov/representatives/find-your-representative)
 
 ## Deploy to Firebase
-  - first merge your feature branch to main on github and resolve any conflicts
-  - then merge main branch to 'live' branch. Project will be deployed automatically (hopefully).
 
+- first merge your feature branch to main on github and resolve any conflicts
+- then merge main branch to 'live' branch. Project will be deployed automatically (hopefully).
 
 ## License
 
